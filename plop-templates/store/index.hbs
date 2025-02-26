@@ -1,0 +1,26 @@
+import { create } from 'zustand';
+import { immer } from 'zustand/middleware/immer';
+
+type State = {};
+
+const use{{pascalCase name}}Store = create(
+  immer<State>(() => ({})),
+);
+
+const selectors = {};
+
+const actions = {};
+
+/**
+ * **{{pascalCase name}} Store**
+ *
+ * this store is used to store {{pascalCase name}} tokens
+ *
+ * **"$"** is a convention to indicate that this is a store
+ */
+const ${{camelCase name}} = {
+  actions,
+  selectors,
+} as const;
+
+export default ${{camelCase name}};
