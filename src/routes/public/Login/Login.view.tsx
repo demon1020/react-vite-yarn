@@ -13,7 +13,7 @@ const LoginView: FC<LoginViewProps> = ({ onLogin, isLoading }) => {
   const navigate = useNavigate();
 
   const goToRegister = () => {
-    navigate(RoutePaths.HOME); //TODO: add register route here
+    navigate(RoutePaths.REGISTER); //TODO: add register route here
   };
 
   return (

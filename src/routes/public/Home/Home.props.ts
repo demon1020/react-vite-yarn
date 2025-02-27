@@ -1,3 +1,6 @@
 export type HomeProps = {};
 
-export type HomeViewProps = {};
+export type HomeViewProps = {
+  activePage: string;
+  setActivePage: React.Dispatch<React.SetStateAction<string>>;
+};

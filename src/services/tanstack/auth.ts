@@ -12,7 +12,7 @@ export type AuthParams = {
 // };
 
 export const signupUsingEmail = async (params: RegisterPayload) => {
-  const { data } = await api.post("/auth/signup", params);
+  const { data } = await api.post("/users/add", params);
   return {
     ...data,
     payload: params,
