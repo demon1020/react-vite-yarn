@@ -15,7 +15,7 @@ const AdminScaffoldView: FC<AdminScaffoldProps> = ({
       <Sidebar />
       <div className="flex flex-1 flex-col w-full h-screen overflow-hidden">
         <header
-          className="bg-[#E7F0FA] px-8 py-8 h-16 sticky top-0 flex justify-between items-center z-10"
+          className="px-8 py-8 h-16 sticky top-0 flex justify-between items-center z-10"
           style={{
             willChange: "top",
             filter: "drop-shadow(rgba(0, 0, 0, 0.1) 0 2px 2px)",

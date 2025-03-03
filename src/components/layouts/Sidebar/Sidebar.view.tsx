@@ -15,7 +15,7 @@ const SidebarView: FC<SidebarProps> = () => {
       <ul className="space-y-3">
         <li
           className={`cursor-pointer py-2 px-4 rounded-lg transition-all duration-300 `}
-          onClick={() => navigate(RoutePaths.SETTINGS)}
+          onClick={() => navigate(RoutePaths.TODOS)}
         >
           <div className="flex items-start space-x-2 ">
             <ListTodoIcon className="h-5 w-5" /> <span>Task Listings</span>

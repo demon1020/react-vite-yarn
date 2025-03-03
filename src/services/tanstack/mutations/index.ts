@@ -3,4 +3,6 @@ export const mutationKeys = {
   register: "register",
   userDetails: "userDetails",
   todos: "todos",
+  settings: "settings",
+
 };

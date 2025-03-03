@@ -4,7 +4,7 @@ import { DashboardViewProps } from "./Dashboard.props";
 import AdminScaffold from "../../../components/core/AdminScaffold";
 
 const DashboardView: FC<DashboardViewProps> = (props) => (
-  <AdminScaffold header={{ title: "Dashboarda" }}>
+  <AdminScaffold header={{ title: "Dashboard" }}>
     <div className="flex">Dashboard</div>
   </AdminScaffold>
 );

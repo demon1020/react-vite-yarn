@@ -28,6 +28,13 @@ export type User = {
   status: string;
 };
 
+export type UserPayload = {
+  id: string;
+  email: string;
+  password: string;
+  username: string;
+};
+
 export type EmailVerificationTokens = {
   email_verification_token: string;
   pending_authentication_token: string;

@@ -2,10 +2,10 @@
 import NotFound from "./NotFound";
 import Register from "./Register";
 import { RoutePaths } from "../../constants/routes";
-import Home from "./Home";
 import LandingPage from "./LandingPage";
 import Login from "./Login";
 import SettingsView from "../../components/modules/Settings";
+import TaskListingView from "../../components/modules/TaskListing";
 
 export default [
   //PLOP_TEMPLATE: public ROUTE DEFINITIONS
@@ -18,10 +18,6 @@ export default [
     element: <Register />,
   },
   {
-    path: RoutePaths.HOME,
-    element: <Home />,
-  },
-  {
     path: RoutePaths.LANDING_PAGE,
     element: <LandingPage />,
   },
@@ -32,5 +28,10 @@ export default [
   {
     path: RoutePaths.SETTINGS,
     element: <SettingsView />,
+  },
+
+  {
+    path: RoutePaths.TODOS,
+    element: <TaskListingView />,
   },
 ];
