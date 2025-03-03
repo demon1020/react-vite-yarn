@@ -24,7 +24,7 @@ const LoginContainer = () => {
         id: data.id,
       });
       $userDetail.actions.setUserDetails(data);
-      navigate(RoutePaths.HOME);
+      navigate(RoutePaths.DASHBOARD);
       ToastHelper.success(`${data.username} logged in successfully`);
     },
   });

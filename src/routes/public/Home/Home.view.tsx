@@ -21,13 +21,7 @@ const HomeView: FC<HomeViewProps> = ({ activePage, setActivePage }) => (
       </div>
       <div className="flex flex-1">
         <div className="w-1/5">
-          <SidebarView
-            activePage={""}
-            logout={function (): void {
-              throw new Error("Function not implemented.");
-            }}
-            setActivePage={setActivePage}
-          ></SidebarView>
+          <SidebarView></SidebarView>
         </div>
         <div className="flex-1 flex justify-center items-center">
           <MainContentView activePage={activePage} />
