@@ -8,6 +8,11 @@ import { RoutePaths } from "../../../constants/routes";
 
 const SidebarView: FC<SidebarProps> = () => {
   const navigate = useNavigate();
+  const handleLogout = () => {
+    localStorage.removeItem("ULTISELL-USER-DETAIL");
+    localStorage.removeItem("ULTISELL-SESSION");
+    navigate(RoutePaths.LOGIN);
+  };
 
   return (
     <div className="w-64 text-white p-5  h-full">
@@ -37,7 +42,7 @@ const SidebarView: FC<SidebarProps> = () => {
           message="Are you sure you want to log out?"
           confirmText="Confirm Logout"
           cancelText="Cancel"
-          onConfirm={() => {}}
+          onConfirm={handleLogout}
           onCancel={() => {}}
         />
       </div>
