@@ -9,14 +9,14 @@ const AuthMiddleWareView: FC<AuthMiddleWareProps> = ({
   children,
   handleRedirect,
 }) => {
-  const isAuthenticated = false;
+  const isAuthenticated = true;
   const navigate = useNavigate();
   useEffect(() => {
     if (handleRedirect) {
       handleRedirect(isAuthenticated);
     } else {
       if (isAuthenticated) {
-        navigate(RoutePaths.HOME);
+        navigate(RoutePaths.DASHBOARD);
       }
     }
   }, [isAuthenticated]);

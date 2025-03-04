@@ -13,7 +13,7 @@ const LandingPageView: FC<LandingPageViewProps> = () => {
         if (!isAuthenticated) {
           navigate(RoutePaths.LOGIN);
         } else {
-          navigate(RoutePaths.HOME);
+          navigate(RoutePaths.DASHBOARD);
         }
       }}
     >

@@ -3,6 +3,7 @@ import React, { FC } from "react";
 import { AdminScaffoldProps } from "./AdminScaffold.props";
 import Sidebar from "../../layouts/Sidebar";
 import CircularProgressIndicatorView from "../../primitives/CircularProgressIndicator";
+import { Outlet } from "react-router-dom";
 
 const AdminScaffoldView: FC<AdminScaffoldProps> = ({
   header,
@@ -29,8 +30,13 @@ const AdminScaffoldView: FC<AdminScaffoldProps> = ({
           <div>{header?.actions}</div>
         </header>
         <div className="overflow-y-auto scroll-smooth h-full">
-          {isLoading ? <CircularProgressIndicatorView /> : children}
+          {isLoading ? (
+            <CircularProgressIndicatorView />
+          ) : (
+            children && <Outlet />
+          )}
         </div>
+
         {footer && (
           <footer
             style={{
