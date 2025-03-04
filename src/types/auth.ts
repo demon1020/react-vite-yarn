@@ -1,4 +1,4 @@
-import { BaseResponse } from "./common";
+import { BaseResponse, BaseResponseList } from "./common";
 
 export type LoginPayload = {
   username: string;
@@ -35,6 +35,13 @@ export type UserPayload = {
   username: string;
 };
 
+export type Todo = {
+  id: number;
+  todo: string;
+  completed: boolean;
+  dueDate: string;
+};
+
 export type EmailVerificationTokens = {
   email_verification_token: string;
   pending_authentication_token: string;
@@ -46,3 +53,12 @@ export type Tokens = {
 };
 
 export type LoginResponse = BaseResponse<User & { tokens: Tokens }>;
+
+// export type TodoResponse = BaseResponseList<Todo>;
+
+export type TodoResponse = {
+  todos: Todo[];
+  total: number;
+  skip: number;
+  limit: number;
+};

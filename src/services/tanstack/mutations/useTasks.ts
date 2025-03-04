@@ -5,7 +5,7 @@ import { getTodos } from "../tasks";
 const useTodos = (options?: MutateOptions<any, any, any>) => {
   return useMutation({
     mutationKey: [mutationKeys.todos],
-    mutationFn: () => getTodos(),
+    mutationFn: (page: number) => getTodos(page),
     ...options,
   });
 };

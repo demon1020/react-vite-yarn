@@ -1,9 +1,6 @@
+import { Todo } from "../../../types/auth";
+
 export type TaskProps = {
-  task: {
-    id: number;
-    todo: string;
-    completed: boolean;
-    dueDate: string;
-  };
+  task: Todo;
   toggleTaskStatus: (id: number) => void;
 };

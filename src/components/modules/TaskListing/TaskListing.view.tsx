@@ -1,64 +1,59 @@
-import React, { FC } from "react";
+import { FC, useState } from "react";
 
 import { TaskListingProps } from "./TaskListing.props";
 import TaskView from "../../primitives/Task";
+import useTodos from "../../../services/tanstack/queries/useTodos";
 
 const TaskListingView: FC<TaskListingProps> = (props) => {
+  const [page, setPage] = useState(1); // Track current page state
+
+  const { data, isPending: isLoading } = useTodos(page);
+
+  console.log(!isLoading && data.skip);
+
   return (
     <div className="p-6 bg-base-100  rounded-lg">
       <h2 className="text-2xl font-bold mb-4">Task List</h2>
-      <TaskView
-        task={{
-          id: 0,
-          todo: "title",
-          completed: false,
-          dueDate: "tommorrow",
-        }}
-        toggleTaskStatus={function (id: number): void {
-          throw new Error("Function not implemented.");
-        }}
-      />
-      <TaskView
-        task={{
-          id: 0,
-          todo: "title",
-          completed: false,
-          dueDate: "tommorrow",
-        }}
-        toggleTaskStatus={function (id: number): void {
-          throw new Error("Function not implemented.");
-        }}
-      />
-      <TaskView
-        task={{
-          id: 0,
-          todo: "title",
-          completed: false,
-          dueDate: "tommorrow",
-        }}
-        toggleTaskStatus={function (id: number): void {
-          throw new Error("Function not implemented.");
-        }}
-      />
+
+      {!isLoading && data.todos.length === 0 && <p>No tasks found.</p>}
+
+      {!isLoading && (
+        <ul className="space-y-4">
+          {data.todos.map((todo) => (
+            <TaskView
+              key={todo.id}
+              task={todo}
+              toggleTaskStatus={function (id: number): void {
+                throw new Error("Function not implemented.");
+              }}
+            />
+          ))}
+        </ul>
+      )}
 
       <div className="w-full flex items-center justify-between mt-10">
         <button
           className="btn btn-outline flex-1 mx-2"
-          // onClick={() => setPage((prev) => Math.max(prev - 1, 0))}
+          onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
           // disabled={page === 0}
         >
           « Previous
         </button>
 
-        <span className="flex-1 text-center font-semibold">
-          {/* Page {skip === 0 ? 1 : (skip / 3).toFixed()} of ( */}
-          {/* {(total / 3).toFixed(0)}) */}
-        </span>
+        {!isLoading && (
+          <span className="flex-1 text-center font-semibold">
+            Page {page} of ({(data.total / 3).toFixed(0)})
+          </span>
+        )}
 
         <button
           className="btn btn-outline flex-1 mx-2"
-          // onClick={() => setPage((prev) => prev + 1)}
-          // disabled={skip + 3 >= total}
+          onClick={() =>
+            setPage((prev) =>
+              data?.total ? Math.min(prev + 1, data.total) : prev
+            )
+          }
+          // disabled={data.skip + 3 >= data.total}
         >
           Next »
         </button>

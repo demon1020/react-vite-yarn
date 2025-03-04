@@ -1,11 +1,13 @@
-import { UserPayload } from "../../types/auth";
+import { TodoResponse, UserPayload } from "../../types/auth";
 import { api } from "./instance";
 
-export const getTodos = async () => {
-  const { data } = await api.get("/todos");
-  return {
-    ...data,
-  };
+export const getTodos = async (page: number): Promise<TodoResponse> => {
+  const limit = 3; // Number of items per page
+  const skip = (page - 1) * limit; // Calculate the skip value
+  const { data } = await api.get<TodoResponse>(
+    `/todos?skip=${skip}&limit=${limit}`
+  );
+  return data;
 };
 
 export const updateUser = async (params: UserPayload) => {
