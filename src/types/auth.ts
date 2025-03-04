@@ -19,6 +19,7 @@ export type User = {
   email: string;
   email_verified: boolean;
   firstName: string;
+  username: string;
   lastName: string;
   profile_picture_url: string | null;
   email_verification_token: string;

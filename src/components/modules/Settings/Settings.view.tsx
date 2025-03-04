@@ -1,7 +1,6 @@
-import React, { FC } from "react";
+import { FC, useEffect, useState } from "react";
 
 import { SettingsProps } from "./Settings.props";
-import useTodos from "../../../services/tanstack/mutations/useTasks";
 import ToastHelper from "../../../helpers/toastHelper";
 import useSettings from "../../../services/tanstack/mutations/useSettings";
 import { Form, Formik } from "formik";
@@ -11,25 +10,47 @@ import {
 } from "./Settings.utils";
 import PrimaryButton from "../../primitives/PrimaryButton";
 import FormikInput from "../../primitives/FormikInput";
+import $userDetail from "../../../store/session/userDetail";
+import { UserPayload } from "../../../types/auth";
 
 const SettingsView: FC<SettingsProps> = ({}) => {
-  // const onTodos = (values: LoginPayload) => {
-  //     todos(values);
-  //   };
-
   const { mutate: settings, isPending: isLoading } = useSettings({
     onSuccess: (data: any) => {
+      $userDetail.actions.setUserDetails(data);
+
       ToastHelper.success(
         `${data.username}'s settings updated in successfully`
       );
     },
   });
+
+  const [initialValues, setInitialValues] = useState<UserPayload>({
+    id: "",
+    email: "",
+    password: "",
+    username: "",
+  });
+
+  // Load data from localStorage on mount
+  useEffect(() => {
+    const user = $userDetail.selectors.useUserDetails();
+    console.log(user);
+
+    setInitialValues({
+      id: user?.id || "",
+      email: user?.email || "",
+      password: "", // Don't prefill password
+      username: user?.username || "",
+    });
+  }, []);
+
   return (
     <div className="p-6 bg-base-100  rounded-lg">
       <h2 className="text-2xl font-bold mb-4">Settings</h2>
       <Formik
-        initialValues={initialSettingsValues}
+        initialValues={initialValues}
         validationSchema={settingsValidationSchema}
+        enableReinitialize={true}
         onSubmit={(values) => {
           console.log(values);
           settings(values);
