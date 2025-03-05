@@ -42,7 +42,7 @@ const AdminScaffoldView: FC<AdminScaffoldProps> = ({
             style={{
               filter: "drop-shadow(rgba(0, 0, 0, 0.1) 0 -2px 2px)",
             }}
-            className="bg-white h-[100px] w-full bottom-0 p-4"
+            className=" h-[100px] w-full bottom-0 p-4"
           >
             {footer}
           </footer>

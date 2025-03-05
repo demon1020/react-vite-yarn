@@ -4,8 +4,11 @@ import { LandingPageViewProps } from "./LandingPage.props";
 import AuthMiddleWareView from "../../../components/core/AuthMiddleWare";
 import { useNavigate } from "react-router-dom";
 import { RoutePaths } from "../../../constants/routes";
+import $session from "../../../store/session";
 
 const LandingPageView: FC<LandingPageViewProps> = () => {
+  const isAuthenticated = $session.selectors.useIsAuthenticated();
+
   const navigate = useNavigate();
   return (
     <AuthMiddleWareView
