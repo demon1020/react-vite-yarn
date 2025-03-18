@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 
 import { SidebarProps } from "./Sidebar.props";
 import { Settings, ListTodoIcon } from "lucide-react";
@@ -8,6 +8,7 @@ import { RoutePaths } from "../../../constants/routes";
 
 const SidebarView: FC<SidebarProps> = () => {
   const navigate = useNavigate();
+
   const handleLogout = () => {
     localStorage.removeItem("ULTISELL-USER-DETAIL");
     localStorage.removeItem("ULTISELL-SESSION");
@@ -20,7 +21,7 @@ const SidebarView: FC<SidebarProps> = () => {
       <ul className="space-y-3">
         <li
           className={`cursor-pointer py-2 px-4 rounded-lg transition-all duration-300 `}
-          onClick={() => navigate(RoutePaths.TODOS)}
+          onClick={() => navigate(RoutePaths.DASHBOARD)}
         >
           <div className="flex items-start space-x-2 ">
             <ListTodoIcon className="h-5 w-5" /> <span>Task Listings</span>

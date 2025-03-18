@@ -12,14 +12,12 @@ export default [
     element: <Dashboard />,
     children: [
       {
+        index: true,
+        element: <TaskListingView />,
+      },
+      {
         path: RoutePaths.SETTINGS,
         element: <SettingsView />,
-      },
-
-      {
-        index: true,
-        path: RoutePaths.TODOS,
-        element: <TaskListingView />,
       },
     ],
   },
